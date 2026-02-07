@@ -1,0 +1,45 @@
+--To join all the independent variables to the dependent variables 
+SELECT 
+	Covid_death.LA_code,
+	Covid_death.LA_name,
+	Covid_death.Total_death,
+	
+	Age_band.Adults,
+	Age_band.Children,
+	Age_band.Ederly,
+	Age_band.Pre_ederly,
+	Age_band.Youth,
+	Age_band.Total_population,
+	
+	Accommodation_type.four_plus_bedrooms,
+	Accommodation_type.one_bedroom,
+	Accommodation_type.three_bedrooms,
+	Accommodation_type.two_bedrooms,
+	
+	Gender.Female,
+	Gender.male,
+	
+	General_Health.Bad_health,
+	General_Health.Good_health,
+	General_Health.Verybad_health,
+	General_Health.Verygood_health,
+	
+	Deprivation.Four_dimension_deprivation,
+	Deprivation.No_dimension_deprivation,
+	Deprivation.One_dimension_deprivation,
+	Deprivation.Three_dimension_deprivation,
+	Deprivation.Two_dimension_deprivation,
+	
+	Qualification_level.High_level_qualifications,
+	Qualification_level.Low_level_qualifications,
+	Qualification_level.No_qualifications,
+	Qualification_level.Other_qualifications
+	
+FROM Covid_death
+JOIN Age_band on Age_band.LA_code = Covid_death.LA_code
+JOIN Accommodation_type on Accommodation_type.LA_code = Covid_death.LA_code
+JOIN Gender on Gender.LA_code = Covid_death.LA_code
+JOIN General_Health on General_Health.LA_code = Covid_death.LA_code
+JOIN Deprivation on Deprivation.LA_code = Covid_death.LA_code
+JOIN Qualification_level on Qualification_level.LA_code = Covid_death.LA_code
+

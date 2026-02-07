@@ -1,0 +1,33 @@
+--To standardize 
+SELECT 
+	LA_code,
+	LA_name,
+
+	(Total_death* 1000.0 / Total_population) AS Total_death_sd,
+	(Adults * 1000.0 / Total_population ) AS Adults_sd,
+	(Children * 1000.0 / Total_population ) AS Children_sd,
+	(Ederly * 1000.0 / Total_population ) AS Ederly_sd,
+	(Pre_ederly * 1000.0 / Total_population ) AS Pre_ederly_sd,
+	(Youth * 1000.0 / Total_population ) AS Youth_sd,
+	(Pre_ederly * 1000.0 / Total_population ) AS Pre_ederly_sd,
+	(Youth * 1000.0 / Total_population ) AS Youth_sd,
+	(four_plus_bedrooms * 1000.0 / Total_population ) AS four_plus_bedrooms_sd,
+	(one_bedroom * 1000.0 / Total_population ) AS one_bedroom_sd,
+	(three_bedrooms * 1000.0 / Total_population ) AS three_bedrooms_sd,
+	(two_bedrooms * 1000.0 / Total_population ) AS two_bedrooms_sd,
+	(Female * 1000.0 / Total_population ) AS Female_sd,
+	(Male * 1000.0 / Total_population ) AS Male_sd,
+	(Bad_health * 1000.0 / Total_population ) AS Bad_health_sd,
+	(Good_health * 1000.0 / Total_population ) AS Good_health_sd,
+	(Verybad_health * 1000.0 / Total_population ) AS Verybad_health_sd,
+	(Verygood_health * 1000.0 / Total_population ) AS Verygood_health_sd,
+	(Four_dimension_deprivation * 1000.0 / Total_population ) AS Four_dimension_deprivation_sd,
+	(No_dimension_deprivation * 1000.0 / Total_population ) AS No_dimension_deprivation_sd,
+	(One_dimension_deprivation * 1000.0 / Total_population ) AS One_dimension_deprivation_sd,
+	(Three_dimension_deprivation * 1000.0 / Total_population ) AS Three_dimension_deprivation_sd,
+	(Two_dimension_deprivation * 1000.0 / Total_population ) AS Two_dimension_deprivation_sd,
+	(High_level_qualifications * 1000.0 / Total_population ) AS High_level_qualifications_sd,
+	(Low_level_qualifications * 1000.0 / Total_population ) AS Low_level_qualifications_sd,
+	(No_qualifications * 1000.0 / Total_population ) AS No_qualifications_sd,
+	(Other_qualifications * 1000.0 / Total_population ) AS Other_qualifications_sd
+	FROM Covid19_death_merged_data

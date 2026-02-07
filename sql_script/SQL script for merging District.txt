@@ -1,0 +1,142 @@
+--The local district Shepway with LA_code; E07000112 is renamed to Folkestone and Hythe 
+--The district was identified in the dataset 
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000112')
+--And updated to Folkestone and Hythe
+UPDATE COVID_19_deaths
+SET LA_name = 'Folkestone and Hythe',LA_code = 'E07000112'
+WHERE LA_code = 'E07000112'
+
+--E07000190 – Taunton Deane and E07000191 – West Somerset was merged to form E07000246 – Somerset West and Taunton
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000190','E07000191')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Somerset West and Taunton',LA_code = 'E07000246'
+WHERE LA_code in ('E07000190','E07000191')
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000246')
+--This query was run to confirm the changes and it was noticed that South Bucks has the same la_code of “E07000246” which was corrected to E07000006 (reference from google)
+UPDATE COVID_19_deaths
+SET LA_name = 'South Bucks',LA_code = 'E07000006'
+WHERE LA_name in ('South Bucks')
+
+
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000201','E07000204')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'West Suffolk',LA_code = 'E07000245'
+WHERE LA_code in ('E07000201','E07000204')
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000205','E07000206')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'East Suffolk',LA_code = 'E07000244'
+WHERE LA_code in ('E07000205','E07000206')
+
+--LA_code (E07000244) also was found to have a different name “East Staffordshire“ and was updated
+
+UPDATE COVID_19_deaths
+SET LA_name = 'East Suffolk',LA_code = 'E07000244'
+WHERE LA_code in ('E07000244') 
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000052','E07000051','E07000053','E07000050','E07000049')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Dorset',LA_code = 'E06000059'
+WHERE LA_code in ('E07000052','E07000051','E07000053','E07000050','E07000049')
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E06000028','E07000048','E06000029')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Bournemouth, Christchurch and Poole',LA_code = 'E06000058'
+WHERE LA_code in ('E06000028','E07000048','E06000029')
+
+
+
+
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000151','E07000154','E07000155')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'West Northamptonshire',LA_code = 'E06000062'
+WHERE LA_code in ('E07000151','E07000154','E07000155')
+
+--Northampton was found and the The LA_code was updated so it can be merged with west Northamptonshire. 
+UPDATE COVID_19_deaths
+SET LA_name = 'West Northamptonshire',LA_code = 'E06000062'
+WHERE LA_name in ('Northampton')
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000150','E07000152','E07000153','E07000156')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'North Northamptonshire',LA_code = 'E06000061'
+WHERE LA_code in ('E07000150','E07000152','E07000153','E07000156')
+
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Somerset',LA_code = 'E06000066'
+WHERE LA_code in ('E07000187','E07000188','E07000189','E07000246')
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000163','E07000164','E07000165','E07000166','E07000167','E07000168','E07000169')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'North Yorkshire',LA_code = 'E06000065'
+WHERE LA_code in ('E07000163','E07000164','E07000165','E07000166','E07000167','E07000168','E07000169')
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000027','E07000030','E07000031')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Westmorland and Furness',LA_code = 'E06000064'
+WHERE LA_code in ('E07000027','E07000030','E07000031')
+
+
+
+SELECT LA_code, LA_name
+FROM COVID_19_deaths
+WHERE LA_code in ('E07000026','E07000028','E07000029')
+
+UPDATE COVID_19_deaths
+SET LA_name = 'Cumberland',LA_code = 'E06000063'
+WHERE LA_code in ('E07000026','E07000028','E07000029')
+
+--The duplicates are summed up together 
+SELECT LA_code,LA_name,
+sum (COVID_19_deaths.Total) as Total
+FROM COVID_19_deaths
+GROUP by LA_code
